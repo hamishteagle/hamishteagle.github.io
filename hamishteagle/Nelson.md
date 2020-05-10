@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title:  "Arguably one of the greatest moments in English footballing history..but long forgotten."
 date:   2020-05-01 12:09:11 +0200
 categories: jekyll update
