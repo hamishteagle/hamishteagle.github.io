@@ -13,14 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Nelson Mandella Goalkeeper
+title: Hamish Edward Teagle - PhD Particle Physics
 #email: hamish.teagle@cern.ch
 description: >- # this means ignore newlines until "baseurl:"
-  The great man's footballing past has been overshadowed by his political achievements. This page aims to rectify that!
+  My personal page for scientific work, projects, ML and AI, and anything I find interesting!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: hamishteagle
-#github_username:  hamishteagle
+github_username:  hamishteagle
 
 # Build settings
 markdown: kramdown
