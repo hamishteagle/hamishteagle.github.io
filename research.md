@@ -1,9 +1,11 @@
 ---
 layout: page
-title: Research
-permalink: /research/
+title: Publications
 ---
-You can download my current thesis [here]({{ site.url }}/PhD_thesis_current.pdf).
 
-<embed src="{{ site.url }}/PhD_thesis_current.pdf" type="application/pdf" width="900" height="1200"/>
-
+{% assign sorted = site.research | sort: 'date' | reverse %}
+{% for res in sorted %}
+<div class="Publication">
+    <h2><a href="{{ res.url }}">{{ res.title }}</a></h2> <embed src="{{ site.url }}/{{ res.pdf }}" type="application/pdf" width="500" height="300" />
+  </div>
+{% endfor %}

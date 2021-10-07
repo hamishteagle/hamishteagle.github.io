@@ -20,7 +20,8 @@ description: >- # this means ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: hamishteagle
-github_username:  hamishteagle
+github_username: hamishteagle
+linkedin_username: hamish-teagle
 
 # Build settings
 remote_theme: jekyll/minima
@@ -31,6 +32,10 @@ minima:
 plugins:
   - jekyll-feed
 
+# Collections
+collections:
+  research:
+    output: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
