@@ -23,8 +23,11 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  hamishteagle
 
 # Build settings
+remote_theme: jekyll/minima
 markdown: kramdown
-theme: jekyll-theme-cayman
+#theme: minima
+minima:
+  skin: solarized-dark
 plugins:
   - jekyll-feed
 
