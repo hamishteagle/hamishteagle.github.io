@@ -1,10 +1,49 @@
 ---
 layout: post
-title:  "Arguably one of the greatest moments in English footballing history..but long forgotten."
-date:   1066-05-01 12:09:11 +0200
-categories: jekyll update
+title:  "Paper: Modeling Movement: A machine-learning approach to track migration routes after displacement"
+date:   2021-09-20 12:09:11 +0200
+category: Paper-Reviews
 ---
-![The great moment captured](/images/NM_goal.png){:class="img-responsive"}
+([Paper
+link](https://d1wqtxts1xzle7.cloudfront.net/63726782/Predicting_Forced_Population_Displacemen-with-cover-page-v2.pdf?Expires=1633610854&Signature=Ont1e6RFJ6LIYHvfH3S3laZbmGIXuLPAh30q18EntO2ASjHvGXp6k~GvfW-iujUPwCeHkovCTeei7QxNd28Hge7LyjOBpawc~AFcfSOIsmweauX2DsBtfYyJOOcw1WX4GUCbYcdobBZfWfx5djFo33AO9qGz9kavAQdCcz4NQzPExLXdvagKFMbpepN5Hf8JfqOlyhj0MKYbdAWDvbaZvs7ELnBVAZCQ1xkPK1Dt4WVpPPsazQXBYWLNVNHLlOydg1gwPFEiJFYcIrlPqa8hZd4AzuZE1AT2P56qiEfeq7MbcSFhZeafpVlCqsNoouwb6NR-T~hxjNG9GVqx-b7BlA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA))
+
+This paper introduces a model for extracting levels of local violence by identifying violent terminology in news articles. The idea being that
+violence in a region is one of the driving factors for causing forced displacement. They use time-sensitive topic modeling.
+
+## Key Pieces
+
+### Non-negative matrix factorisation (NMF)
+
+Matrix $V$ with documents as columns and words as rows where the elements are the frequency of the word in the document. This can be factorised into:
+
+$$V=WH$$
+
+with, for the jth document and kth topic:
+
+$$V(:,j) \approx \sum^r_{k=1}W(:,k) H(k,j)$$
+
+Each document (column in $V$) can be considered formed from a set of topics, $r$,. $W$ is a features matrix assigning words to hidden topics, $k$. $H$
+is a weights matrix assigning topics to documents. The number of topics is a key pre-defined measure and is optimised using semantic analysis on the
+topics.
 
 
-The great moment is captured in this photo, arguably one of the most impressive feates of individual skill ever seen on the football pitch. Mandela was playing for Shitterton Wanderers FC (on a 2 season loan from Wetwang United) and had taken the team to promotion in the previous season with clean sheets in every game, under management of Zinedine Zidane who was early in his managerial career. Shitterton were in troubling times late in the season, staring into the jaws of relagation, and were struggling against a fresh Brown Willy City side in a scrappy rainy Tuesday relagation battle. The score was 1-1, a win would see either team lifted out of the relagation zone and into safety for the last week of the season. In the 90th minute a corner resulted from a fast break for the Browns, everything was thrown at a last-ditch attempt to win, and the decision was made to bring goal keeper Brad Friedel up for the attack... As the corner was swung, a strong stoke wind took it towards Mandela's goal and he leaped at the chance for what seemed to be an easy clearence. In actuality, Mandela had planned the move since Friedel left his area to join the attack. And as he leaped he swung into 'the scorpian' and clared the ball all the way into the Browns goal, leaving Friedel with no opportunity to scamble back into position.
+
+
+
+
+
+
+
+
+
+
+### LDA (Latent Dirichlet Allocation) ([TDS article](https://towardsdatascience.com/latent-dirichlet-allocation-lda-9d1cd064ffa2)).
+ This is a method for grouping words into a (pre-defined) number of (not defined) topics. The documents are represented as groups of topics.
+
+The method is to:
+ > - Randomly assign words in the dataset to a topic 
+ > - Calculate the proportion of words in a document that are assigned to a given topic $$P(word\|topic)$$
+ > - Calculate the proportion of documents containing a word that are assigned to a topic $$P(topic\|document)$$
+ > - Calculate the probability that a word is associated with a given topic $$P(word\|topic)$$ = $$P(topic\|document) \times P(word\|topic)$$
+
+
