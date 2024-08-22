@@ -1,3 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-07T12:04:41+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hamish Edward Teagle - PhD Particle Physics</title><subtitle>My personal page for scientific work, projects, ML and AI, and anything I find interesting!</subtitle><entry><title type="html">Arguably one of the greatest moments in English footballing history..but long forgotten.</title><link href="http://localhost:4000/jekyll/update/1066/05/01/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Arguably one of the greatest moments in English footballing history..but long forgotten." /><published>1066-05-01T11:09:11+01:00</published><updated>1066-05-01T11:09:11+01:00</updated><id>http://localhost:4000/jekyll/update/1066/05/01/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/1066/05/01/welcome-to-jekyll.html">&lt;p&gt;&lt;img src=&quot;/images/NM_goal.png&quot; alt=&quot;The great moment captured&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-22T11:40:49+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hamish Edward Teagle - PhD Particle Physics</title><subtitle>My personal page for scientific work, projects, ML and AI, and anything I find interesting!</subtitle><entry><title type="html">Paper - RAMBLA: A FRAMEWORK FOR EVALUATING THE RELIABILITY OF LLMS AS ASSISTANTS IN THE BIOMEDICAL DOMAIN</title><link href="http://localhost:4000/paper-reviews/2024/08/14/RAMBLA-A-framework-for-evaluating-the-reliability-of-LLMs-in-the-Biomedical-domain.html" rel="alternate" type="text/html" title="Paper - RAMBLA: A FRAMEWORK FOR EVALUATING THE RELIABILITY OF LLMS AS ASSISTANTS IN THE BIOMEDICAL DOMAIN" /><published>2024-08-14T11:09:11+01:00</published><updated>2024-08-14T11:09:11+01:00</updated><id>http://localhost:4000/paper-reviews/2024/08/14/RAMBLA:-A-framework-for-evaluating-the-reliability-of-LLMs-in-the-Biomedical-domain</id><content type="html" xml:base="http://localhost:4000/paper-reviews/2024/08/14/RAMBLA-A-framework-for-evaluating-the-reliability-of-LLMs-in-the-Biomedical-domain.html">&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
 
-&lt;p&gt;The great moment is captured in this photo, arguably one of the most impressive feates of individual skill ever seen on the football pitch. Mandela was playing for Shitterton Wanderers FC (on a 2 season loan from Wetwang United) and had taken the team to promotion in the previous season with clean sheets in every game, under management of Zinedine Zidane who was early in his managerial career. Shitterton were in troubling times late in the season, staring into the jaws of relagation, and were struggling against a fresh Brown Willy City side in a scrappy rainy Tuesday relagation battle. The score was 1-1, a win would see either team lifted out of the relagation zone and into safety for the last week of the season. In the 90th minute a corner resulted from a fast break for the Browns, everything was thrown at a last-ditch attempt to win, and the decision was made to bring goal keeper Brad Friedel up for the attack… As the corner was swung, a strong stoke wind took it towards Mandela’s goal and he leaped at the chance for what seemed to be an easy clearence. In actuality, Mandela had planned the move since Friedel left his area to join the attack. And as he leaped he swung into ‘the scorpian’ and clared the ball all the way into the Browns goal, leaving Friedel with no opportunity to scamble back into position.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"></summary></entry></feed>
+&lt;p&gt;LLM benchmarking is mainly focussed on general purpose tasks or multiple choice questions, not necessarily domain-specific performance. When they do measure domain-specific performance, it is often primarily measure knowledge. They investigates:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Robustness to prompt re-wording&lt;/li&gt;
+  &lt;li&gt;Information retrieval capability&lt;/li&gt;
+  &lt;li&gt;Hallucinations, ‘I don’t know’ in cases with insufficient info&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Evaluating robustness and recall leverages the PubMedQA-Labelled dataset, which contains a set containing a question related to a specific article, a context (the article abstract without conclusion), a long answer (the conclusion part of the abstract) and also a Yes/No answer.&lt;/p&gt;
+
+&lt;p&gt;Robustness is measured by:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Observing changes when re-phrasing the question (Rephrasing is done using GPT4).&lt;/li&gt;
+  &lt;li&gt;Observing any bias introduced by providing few-shot examples (can be biased towards following examples closely).&lt;/li&gt;
+  &lt;li&gt;Adding spelling mistakes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Recall is measured by:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Modify the original context such that it contradicts the original - does the LLM still use the context correctly, or does it rely on it’s training data.&lt;/li&gt;
+  &lt;li&gt;Add pieces of irrelevant information to the context - can it focus on only the relevant information?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;They leverage another dataset, Bioasq, containing human-curated question, context and answer to investigate performance in the context of Hallucinations. These tasks are all generating free-text responses to the questions. The following methods are used to measure performance:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Free-Form answer the Bioasq dataset questions, answers are scored using GPT4 to evaluate semantic similarity.&lt;/li&gt;
+  &lt;li&gt;Asking the model to generate a summary of the context. The summary is provided in place of the context for the corresponding question and performance on the question with the summary context is assessed.&lt;/li&gt;
+  &lt;li&gt;Ask the LLM, given the context and the answer to reverse-engineer the question that was asked. The question is compared for semantic similarity with the true question.&lt;/li&gt;
+  &lt;li&gt;“I don’t know task” - Ask a question of the LLM but provide only irrelevant context. Assess whether the LLM can refrain from answering and correctly identify that there is no relevant info.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Results:&lt;/p&gt;
+
+&lt;p&gt;Interesting points: The GPT models are most robust to biases from few-shot prompting vs LLama and Mistral which are smaller models. GPT4 outperforms the field in the free-form tasks, particularly the GPTs are robust to hallucinations in the “I don’t know task”. We know that OpenAI have been focusing on this aspect in their latest models so it’s maybe not a surprise. It might be worth investigating the impact of the semantic analysis (which was done using GPT4) on the semantic closeness scoring in these tasks. It’s possible that there is an interaction between the response of the model and how close it thinks it is semantically to the original. It would be interesting to compare semantic scores calculated using each model to explore if they are biased to their own responses.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/RAMBLA:-A-framework-for-evaluating-the-reliability-of-LLMs-in-the-Biomedical-domain.png&quot; alt=&quot;Resulting scores&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I would expect that the performance on these tasks would differentially impact the appropriateness for usage in the biomedical domain. For instance, a propensity to hallucinate might carry more risk than distance in semantic meaning, or sensitivity to spelling mistakes. This would be interesting to explore further.&lt;/p&gt;
+
+&lt;h2 id=&quot;jargon&quot;&gt;Jargon:&lt;/h2&gt;
+&lt;p&gt;RAMBLA - Reliability AssesMent for Biomedical LLM Assistants&lt;/p&gt;</content><author><name></name></author><category term="Paper-Reviews" /><summary type="html">Summary</summary></entry><entry><title type="html">(WIP) Paper - Artificial Intelligence in Drug Discovery:Applications and Techniques</title><link href="http://localhost:4000/paper-reviews/2024/08/01/Artificial-Intelligence-in-drug-discovery.html" rel="alternate" type="text/html" title="(WIP) Paper - Artificial Intelligence in Drug Discovery:Applications and Techniques" /><published>2024-08-01T11:09:11+01:00</published><updated>2024-08-01T11:09:11+01:00</updated><id>http://localhost:4000/paper-reviews/2024/08/01/Artificial-Intelligence-in-drug-discovery</id><content type="html" xml:base="http://localhost:4000/paper-reviews/2024/08/01/Artificial-Intelligence-in-drug-discovery.html">&lt;h1 id=&quot;notes&quot;&gt;Notes&lt;/h1&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The paper focuses on small-molecule drugs, rather than biologics like antibodies or vaccines.&lt;/p&gt;
+
+&lt;p&gt;Pre-requisite for drug discovery is presence of a hypothesis for activation or inhibition of a target that results in therapeutic effects for the disease. High-throughput screening is used to rapidly identify compounds that ‘hit-candidates’, i.e. candidates for this specific interaction, by searching through large databases of SAR(structure-activity relationship) databases. This search technique is known as ‘virtual screening’. VS can be conducted using computational approaches that focus on structure-based knowledge of the target or known active ligands of the target.&lt;/p&gt;
+
+&lt;p&gt;Binding specificity is important - molecules usually bind to more than one target, binding to unintended targets can lead to unexpected side-effects. Some important properties considered whilst developing a drug compound: Synthetic Accessibility Score (how easy or hard it is to synthesise a molecule), Quantitative estimation of drug likeliness (how likely the molecule is a viable candidate). Usually, a predictive model is built to predict these scores for a given molecule. A more intriguing prospect
+from QSAR is that these models can be exploited inversely to reveal the structural features underlying the optimal properties to guide drug design from scratch.&lt;/p&gt;
+
+&lt;h1 id=&quot;definitions-and-concepts&quot;&gt;Definitions and Concepts&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;de-novo&lt;/code&gt; drug design - from scratch, not based on existing drugs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Key Concepts of De-Novo Drug Design:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Target Identification: The process begins with identifying a biological target, usually a protein associated with a disease. Understanding the structure and function of this target is crucial.&lt;/li&gt;
+  &lt;li&gt;Structure-Based Design: Using the 3D structure of the biological target (often obtained through techniques like X-ray crystallography or NMR spectroscopy), scientists design molecules that can interact with the target in a specific manner.&lt;/li&gt;
+  &lt;li&gt;Computational Methods: Advanced algorithms and computational models are employed to predict how new molecules will interact with the target. Techniques like molecular docking, molecular dynamics, and virtual screening are commonly used.&lt;/li&gt;
+  &lt;li&gt;Scaffold Creation: A basic chemical scaffold (or core structure) is designed, onto which functional groups can be added to optimize interaction with the target.&lt;/li&gt;
+  &lt;li&gt;Optimization: Once potential drug candidates are identified, they undergo optimization to enhance properties like potency, selectivity, solubility, and stability.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Iterative Process: De-novo drug design is often iterative, with multiple rounds of design, testing, and refinement to improve the drug candidates.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retrosynthesis&lt;/code&gt; Building up a complex target molecule from simpler precursors.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Retrosynthesis is a method used in organic chemistry and drug discovery to plan the synthesis of complex molecules by breaking them down into simpler precursor molecules. This approach involves working backward from the target molecule to simpler starting materials, essentially “deconstructing” the molecule step by step. Retrosynthesis is a critical tool for designing synthetic routes to produce complex drugs and other organic compounds.&lt;/p&gt;
+
+&lt;p&gt;Key Concepts of Retrosynthesis:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Target Molecule: The process begins with a defined target molecule, which is the complex structure that needs to be synthesized. In drug discovery, this could be a potential drug candidate.&lt;/li&gt;
+  &lt;li&gt;Disconnection: The target molecule is “disconnected” or broken down into simpler structures, called intermediates or precursors. This is done by identifying bonds that can be theoretically broken to yield simpler, more readily available molecules.&lt;/li&gt;
+  &lt;li&gt;Synthons: The simpler molecules derived from the disconnection process are called synthons. These are idealized fragments that represent the building blocks from which the target molecule can be constructed.&lt;/li&gt;
+  &lt;li&gt;Reagents and Reactions: Each synthon corresponds to a real chemical reagent or a set of reagents that can be used to create the bond that was “disconnected” in the retrosynthesis step.&lt;/li&gt;
+  &lt;li&gt;Iterative Process: Retrosynthesis is typically an iterative process. The simpler intermediates identified from the first round of disconnections may themselves be subjected to further retrosynthesis until they are reduced to simple, commercially available, or easily synthesized starting materials.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Synthetic Pathway Design: Once a retrosynthetic analysis is complete, it provides a synthetic pathway or strategy to construct the target molecule from basic starting materials. Chemists then use this pathway to carry out the synthesis in the lab.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Ligand definition:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A ligand is a molecule that can bind to a specific site on a target molecule, typically a protein, forming a complex. Ligands are key players in various biological processes and are crucial in fields like biochemistry, pharmacology, and drug design.&lt;/p&gt;
+
+&lt;p&gt;Binding: Ligands interact with their target molecules through various types of bonds, including ionic bonds, hydrogen bonds, van der Waals forces, and sometimes covalent bonds. The binding site on the target molecule is usually a specific region, such as the active site of an enzyme or a receptor’s binding pocket.&lt;/p&gt;
+
+&lt;p&gt;Agonists and Antagonists:&lt;/p&gt;
+
+&lt;p&gt;Agonists: Ligands that bind to a receptor and activate it, triggering a biological response. For example, adrenaline is an agonist that binds to adrenergic receptors to stimulate the “fight or flight” response.
+Antagonists: Ligands that bind to a receptor but do not activate it, instead blocking the receptor’s normal function. For instance, beta-blockers are antagonists that prevent adrenaline from binding to its receptor, reducing heart rate.&lt;/p&gt;
+
+&lt;p&gt;Role in Drug Design:
+In drug design, the goal is often to create or identify ligands that can specifically bind to a target protein involved in a disease process. By doing so, the ligand can modulate the protein’s activity, leading to therapeutic effects. This concept is fundamental in the development of many pharmaceutical drugs.&lt;/p&gt;</content><author><name></name></author><category term="Paper-Reviews" /><summary type="html">Notes Introduction The paper focuses on small-molecule drugs, rather than biologics like antibodies or vaccines.</summary></entry><entry><title type="html">Paper: Modeling Movement: A machine-learning approach to track migration routes after displacement</title><link href="http://localhost:4000/paper-reviews/2021/09/20/Modeling_Movement.html" rel="alternate" type="text/html" title="Paper: Modeling Movement: A machine-learning approach to track migration routes after displacement" /><published>2021-09-20T11:09:11+01:00</published><updated>2021-09-20T11:09:11+01:00</updated><id>http://localhost:4000/paper-reviews/2021/09/20/Modeling_Movement</id><content type="html" xml:base="http://localhost:4000/paper-reviews/2021/09/20/Modeling_Movement.html">&lt;p&gt;(&lt;a href=&quot;https://d1wqtxts1xzle7.cloudfront.net/63726782/Predicting_Forced_Population_Displacemen-with-cover-page-v2.pdf?Expires=1633610854&amp;amp;Signature=Ont1e6RFJ6LIYHvfH3S3laZbmGIXuLPAh30q18EntO2ASjHvGXp6k~GvfW-iujUPwCeHkovCTeei7QxNd28Hge7LyjOBpawc~AFcfSOIsmweauX2DsBtfYyJOOcw1WX4GUCbYcdobBZfWfx5djFo33AO9qGz9kavAQdCcz4NQzPExLXdvagKFMbpepN5Hf8JfqOlyhj0MKYbdAWDvbaZvs7ELnBVAZCQ1xkPK1Dt4WVpPPsazQXBYWLNVNHLlOydg1gwPFEiJFYcIrlPqa8hZd4AzuZE1AT2P56qiEfeq7MbcSFhZeafpVlCqsNoouwb6NR-T~hxjNG9GVqx-b7BlA__&amp;amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA&quot;&gt;Paper
+link&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;This paper introduces a model for extracting levels of local violence by identifying violent terminology in news articles. The idea being that
+violence in a region is one of the driving factors for causing forced displacement. They use time-sensitive topic modeling.&lt;/p&gt;
+
+&lt;h2 id=&quot;key-pieces&quot;&gt;Key Pieces&lt;/h2&gt;
+
+&lt;h3 id=&quot;extracting-violence-scores-from-media-articles&quot;&gt;Extracting violence scores from media articles&lt;/h3&gt;
+&lt;p&gt;This is a topic modeling method. Documents are analysed to extract the relationship between words and topics by comparing their frequency across many
+documents. Non-negative matrix factorisation (NMF) is used to build topics in an unsupervised way. The method is as follows:&lt;/p&gt;
+
+&lt;p&gt;Matrix $V$ with documents as columns and words as rows where the elements are the frequency of the word in the document. This can be factorised into:&lt;/p&gt;
+
+\[V=WH\]
+
+&lt;p&gt;with, for the jth document and kth topic:&lt;/p&gt;
+
+\[V(:,j) \approx \sum^r_{k=1}W(:,k) H(k,j)\]
+
+&lt;p&gt;Each document (column in $V$) can be considered formed from a set of topics, $r$. $W$ is a features matrix assigning words to hidden topics, $k$. $H$
+is a weights matrix that maps the topics to documents. The number of topics, $len(r)$, is a key pre-defined quantity that affects the quality of the
+identified topics - too many topics means that the topics are too niche, too few and the topics are too broad and vague. $len(r)$ is optimised by
+scanning different values and using semantic analysis to evaluate the topics that are constructed.&lt;/p&gt;
+
+&lt;h3 id=&quot;predictive-model&quot;&gt;Predictive Model&lt;/h3&gt;
+&lt;p&gt;Topic analysis is done in month chunks. The violent topics are identified by hand, violence measure is the number of violent topics divided by the
+total number of topics for a document. This is combined with lag variables (previous numbers of refugees) for each month as input for a predictive
+regression model. A walk forward evaluation of the model is performed: a prediction is given for a given month, the RMSE is calculated for this
+prediction, at the next month the true value for this month is provided as input. Three models are build that predict t+1, t+2 and t+3 months ahead.
+The most successful model for based on the RMSE value is a Multi-Layer Perceptron regression model. The best model for classifying the topics
+identified into one of seven pre-defined areas:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;violence/terrorism&lt;/li&gt;
+    &lt;li&gt;economic issues&lt;/li&gt;
+    &lt;li&gt;environmental issues&lt;/li&gt;
+    &lt;li&gt;political issues&lt;/li&gt;
+    &lt;li&gt;religious&lt;/li&gt;
+    &lt;li&gt;conflicts&lt;/li&gt;
+    &lt;li&gt;refugee crisis&lt;/li&gt;
+    &lt;li&gt;relief&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The best classifier model, based on measures of precision, recall and F1 score is Stochastic Gradient Descent. The paper mentions that the classifier
+model impacts the performance of the prediction model but doesn’t mention this much (maybe it is complicated and extensive). The classifier
+performance is very impressive based on historical data.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2020-05-01.png&quot; alt=&quot;Classifier performance&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;aside-lda-latent-dirichlet-allocation-tds-article&quot;&gt;Aside: LDA (Latent Dirichlet Allocation) (&lt;a href=&quot;https://towardsdatascience.com/latent-dirichlet-allocation-lda-9d1cd064ffa2&quot;&gt;TDS article&lt;/a&gt;).&lt;/h3&gt;
+&lt;p&gt;This is a method for grouping words into a (pre-defined) number of (not defined) topics. The documents are represented as groups of topics.&lt;/p&gt;
+
+&lt;p&gt;The method is to:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Randomly assign words in the dataset to a topic&lt;/li&gt;
+    &lt;li&gt;Calculate the proportion of words in a document that are assigned to a given topic \(P(word\|topic)\)&lt;/li&gt;
+    &lt;li&gt;Calculate the proportion of documents containing a word that are assigned to a topic \(P(topic\|document)\)&lt;/li&gt;
+    &lt;li&gt;Calculate the probability that a word is associated with a given topic \(P(word\|topic)\) = \(P(topic\|document) \times P(word\|topic)\)&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="Paper-Reviews" /><summary type="html">(Paper link)</summary></entry></feed>
